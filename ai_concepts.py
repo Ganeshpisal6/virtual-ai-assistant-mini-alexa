@@ -1,28 +1,26 @@
 def rule_based_recommendation():
-    """Demonstrate a simple rule-based recommendation system."""
+    """Demonstrate a simple rule-based recommendation using time of day."""
+
+    from datetime import datetime
+
+    current_hour = datetime.now().hour
 
     print("\nAssistant: Rule-Based Recommendation Demo")
-    print("Answer the following questions.")
 
-    interest = input("You: What do you like - technology, sports, or music? ").strip().lower()
-
-    if interest == "technology":
-        recommendation = "You may enjoy learning Python and Artificial Intelligence."
-
-    elif interest == "sports":
-        recommendation = "You may enjoy exploring sports analytics."
-
-    elif interest == "music":
-        recommendation = "You may enjoy learning about music technology."
-
+    if 5 <= current_hour < 12:
+        recommendation = "Good morning! You may enjoy starting your day with learning or exercise."
+    elif 12 <= current_hour < 17:
+        recommendation = "Good afternoon! You may enjoy focusing on productive work or study."
+    elif 17 <= current_hour < 21:
+        recommendation = "Good evening! You may enjoy exercise, hobbies, or relaxation."
     else:
-        recommendation = "Try exploring different topics to discover your interests."
+        recommendation = "It's nighttime. You may want to relax and prepare for a good night's sleep."
 
     print(f"Assistant: Recommendation: {recommendation}")
 
 
 def perceptron_demo():
-    """Demonstrate a very simple perceptron for an AND-like rule."""
+    """Demonstrate a simple perceptron using an AND-like rule."""
 
     print("\nAssistant: Simplified Perceptron Demo")
     print("Enter two values: 0 or 1.")
@@ -35,15 +33,15 @@ def perceptron_demo():
             print("Assistant: Please enter only 0 or 1.")
             return
 
-        # Simple weights and bias.
+        # Simple perceptron weights and bias
         weight1 = 1
         weight2 = 1
         bias = -1
 
-        # Weighted sum.
+        # Calculate weighted sum
         total = (x1 * weight1) + (x2 * weight2) + bias
 
-        # Step activation function.
+        # Step activation function
         if total >= 1:
             output = 1
         else:
